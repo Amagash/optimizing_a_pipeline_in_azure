@@ -11,10 +11,41 @@ This model is then compared to an Azure AutoML run.
 
 This dataset contains data about marketing campaigns
 
+Input variables:
+
+age: (numeric)
+job: type of job (categorical)
+marital: marital status (categorical)
+education: (categorical)
+default: has credit in default? (categorical)
+housing: has housing loan? (categorical: 'no','yes','unknown')
+loan: has personal loan? (categorical)
+contact: contact communication type (categorical)
+month: last contact month of year (categorical)
+day_of_week: last contact day of the week (categorical)
+duration: last contact duration, in seconds (numeric)
+campaign: number of contacts performed during this campaign and for this client (numeric)
+pdays: number of days that passed by after the client was last contacted from a previous campaign (numeric)
+previous: number of contacts performed before this campaign and for this client (numeric)
+poutcome: outcome of the previous marketing campaign (categorical)
+emp.var.rate: employment variation rate - quarterly indicator (numeric)
+cons.price.idx: consumer price index - monthly indicator (numeric)
+cons.conf.idx: consumer confidence index - monthly indicator (numeric)
+euribor3m: euribor 3 month rate - daily indicator (numeric)
+nr.employed: number of employees - quarterly indicator (numeric)
+
+Output variable (desired target):
+
+y - has the client subscribed a term deposit? (binary: 'yes','no')
+
 **In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."**
+
+
 
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
+### Pipeline architecture
+
 
 **What are the benefits of the parameter sampler you chose?**
 
@@ -25,7 +56,8 @@ This dataset contains data about marketing campaigns
 
 ## Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
-
+AutoML best : best_score : 0.9180576631259484
+Scikit best : Accuracy: 0.9150227617602428
 ## Future work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
 
