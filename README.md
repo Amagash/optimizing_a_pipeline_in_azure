@@ -3,40 +3,42 @@
 ## Overview
 This project is part of the Udacity Azure ML Nanodegree.
 In this project, we build and optimize an Azure ML pipeline using the Python SDK and a provided Scikit-learn model.
-This model is then compared to an Azure AutoML run.
+This model is then compared to an Azure AutoML run. 
+
+The main steps are described in the following diagram:
+
+![img_1](img/img_1.png)
 
 ## Summary
 **In 1-2 sentences, explain the problem statement: e.g "This dataset contains data about... we seek to predict..."**
 ###Problem statement
 
-This dataset contains data about marketing campaigns
+This dataset contains data about marketing campaigns for a bank. This is a tabular dataset containing 32951 rows, 20 features and one target variable.
 
-Input variables:
-
-age: (numeric)
-job: type of job (categorical)
-marital: marital status (categorical)
-education: (categorical)
-default: has credit in default? (categorical)
-housing: has housing loan? (categorical: 'no','yes','unknown')
-loan: has personal loan? (categorical)
-contact: contact communication type (categorical)
-month: last contact month of year (categorical)
-day_of_week: last contact day of the week (categorical)
-duration: last contact duration, in seconds (numeric)
-campaign: number of contacts performed during this campaign and for this client (numeric)
-pdays: number of days that passed by after the client was last contacted from a previous campaign (numeric)
-previous: number of contacts performed before this campaign and for this client (numeric)
-poutcome: outcome of the previous marketing campaign (categorical)
-emp.var.rate: employment variation rate - quarterly indicator (numeric)
-cons.price.idx: consumer price index - monthly indicator (numeric)
-cons.conf.idx: consumer confidence index - monthly indicator (numeric)
-euribor3m: euribor 3 month rate - daily indicator (numeric)
-nr.employed: number of employees - quarterly indicator (numeric)
-
-Output variable (desired target):
-
-y - has the client subscribed a term deposit? (binary: 'yes','no')
+|    | Variable name | Type            | Description                                      | Example           |
+|----|---------------|-----------------|--------------------------------------------------|-------------------|
+| 1  | age           | numerical (int) | age of the customer                              | 25                |
+| 2  | job           | categorical     | job of the customer                              | technician        |
+| 3  | marital       | categorical     | marital status of the customer                   | married           |
+| 4  | education     | categorical     | education level of the customer                  | university.degree |
+| 5  | default       | categorical     | Unknown. Can be 'yes', 'no', 'unknown'           | no                |
+| 6  | housing       | categorical     | Has housing loan? can be 'yes', 'no', 'unknown'. | yes               |
+| 7  | loan          | categorical     | Has personal loan? Can be 'yes', 'no', 'unknown' | no                |
+| 8  | contact       | categorical     | Type of communication to contact the customer    | cellular          |
+| 9  | month         | categorical     | Month the customer was contacted                 | jun               |
+| 10 | day_of_week   | categorical     | The day of the week the customer was contacted   | fri               |
+| 11 | duration      | numeric         | communication duration in seconds                | 285               |
+| 12 | campaign      | numeric         | Number of times the customer was contacted       | 4                 |
+| 13 | pdays         | numeric         | Unknown.                                         | 999               |
+| 14 | previous      | numeric         | Unknown.                                         | 0                 |
+| 15 | poutcome      | categorical     | outcome of the campaign                          | nonexistent       |
+| 16 | emp.var.rate  | numeric         | employment variation rate - quarterly indicator  | 1.4               |
+| 17 | cons.price.id | numeric         | consumer price index - monthly indicator         | 92.8929999999999  |
+| 18 | cons.conf.idx | numeric         | consumer confidence index - monthly indicator    | -46.2             |
+| 19 | euribor3m     | numeric         | euribor 3 month rate - daily indicator           | 1.299             |
+| 20 | nr.employed   | numeric         | number of employees - quarterly indicator        | 5099.1            |
+|----|---------------|-----------------|--------------------------------------------------|-------------------|
+| 21 | y             | biniary         | target                                           | 'yes' or 'no'     |
 
 **In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."**
 
