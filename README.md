@@ -11,9 +11,14 @@ The main steps are described in the following diagram:
 
 ## Summary
 **In 1-2 sentences, explain the problem statement: e.g "This dataset contains data about... we seek to predict..."**
-###Problem statement
+### Problem statement
 
-This dataset contains data about marketing campaigns for a bank. This is a tabular dataset containing 32951 rows, 20 features and one target variable.
+This dataset contains data about telemarketing campaigns of banks and is part of the following research paper: [A Data-Driven Approach to Predict the
+Success of Bank Telemarketing](https://repositorio.iscte-iul.pt/bitstream/10071/9499/5/dss_v3.pdf)
+
+The goal is to predict the success of telemarketing calls for selling bank long-term deposits.
+
+The dataset is a tabular dataset containing 32951 rows, 20 features and one target variable.
 
 |    | Variable name | Type            | Description                                      | Example           |
 |----|---------------|-----------------|--------------------------------------------------|-------------------|
@@ -42,10 +47,35 @@ This dataset contains data about marketing campaigns for a bank. This is a tabul
 
 **In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."**
 
+Two models were built using two different approaches, Scikit-learn and Azure AutoML.
 
+| Model        | Best score |
+|--------------|------------|
+| Scikit-learn | 91.50%     |
+| Azure AutoML | 91.81%     |
 
+The best performing model was built using Azure AutoML.
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
+
+Those are the steps of the Scikit-learn pipeline:
+1. Initialize the Workspace and get the workspace config
+2. Create the Experiment in the workspace called `udacity-project`
+3. Create the compute cluster on the workspace called `udacity-cluster`
+4. Create a `HyperDriveConfig` specifying 
+   - SKLearn estimator in the `train.py`: `LogisticRegression` specifying the following parameters
+      - `C` : Inverse of regularization strength. Smaller values cause stronger regularization
+      - `max_iter` : Maximum number of iterations to converge
+   - Policy:  An early termination policy based on slack factor/slack amount and evaluation interval
+   - Parameter sampler: Defines random sampling over a hyperparameter search space
+5. Submit the `HyperDriveConfig` to the experiment:
+   1. Loading the data
+   2. Cleaning the data (drop NaN values, One Hot encoding, Convertion of some categorical variable into dummy variables...)
+   3. Split the data into training and test sets
+   4. Parse the arguments for the Logistic Regression parameters
+   5. Compute the accuracy and log the results
+6.  
+
 ### Pipeline architecture
 
 
