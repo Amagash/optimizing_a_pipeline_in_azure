@@ -119,12 +119,13 @@ Here is a list of the metrics measured.
 
 ![img_4](img/img_4.png)
 
-
-
 ## Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
-AutoML best : best_score : 0.9180576631259484
-Scikit best : Accuracy: 0.9150227617602428
+
+Architectures were pretty different with a Logistic Regression model for Scikit-learn and a Voting Ensemble model for AutoML. Despite this difference, the two models have comparable performances with 91.80% accuracy for AutoML versus 91.50% for Scikit-learn. 
+
+The real difference is in the time it takes to get the model. With Scikit-learn, we need to generate the train.py and specify all the hyperparameter tuning while only having to give the dataset to AutoML. It is definitely a time saver without loosing in accuracy.
+
 ## Future work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
 
