@@ -148,6 +148,10 @@ The AutoML run could also be extended with different experiment timeout to see i
 **If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
 **Image of cluster marked for deletion**
 
+`aml_compute.delete()`
+
+![img_6](img/img_6.PNG)
+
 
 Sources : 
 - [A Data-Driven Approach to Predict the Success of Bank Telemarketing](https://repositorio.iscte-iul.pt/bitstream/10071/9499/5/dss_v3.pdf)
