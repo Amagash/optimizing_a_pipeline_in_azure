@@ -13,8 +13,7 @@ The main steps are described in the following diagram:
 **In 1-2 sentences, explain the problem statement: e.g "This dataset contains data about... we seek to predict..."**
 ### Problem statement
 
-This dataset contains data about telemarketing campaigns of banks and is part of the following research paper: [A Data-Driven Approach to Predict the
-Success of Bank Telemarketing](https://repositorio.iscte-iul.pt/bitstream/10071/9499/5/dss_v3.pdf)
+This dataset contains data about telemarketing campaigns of banks and is part of the following research paper: [A Data-Driven Approach to Predict the Success of Bank Telemarketing](https://repositorio.iscte-iul.pt/bitstream/10071/9499/5/dss_v3.pdf)
 
 The goal is to predict the success of telemarketing calls for selling bank long-term deposits.
 
@@ -68,18 +67,26 @@ Those are the steps of the Scikit-learn pipeline:
       - `max_iter` : Maximum number of iterations to converge
    - Policy:  An early termination policy based on slack factor/slack amount and evaluation interval
    - Parameter sampler: Defines random sampling over a hyperparameter search space
-5. Submit the `HyperDriveConfig` to the experiment:
+5. Submit the `HyperDriveConfig` to the experiment and run it:
    1. Loading the data
    2. Cleaning the data (drop NaN values, One Hot encoding, Convertion of some categorical variable into dummy variables...)
    3. Split the data into training and test sets
-   4. Parse the arguments for the Logistic Regression parameters
-   5. Compute the accuracy and log the results
-6.  
+   4. Parse the arguments (C, max_iter) for the Logistic Regression parameters
+   5. Train the model on the training set
+   6. Compute the accuracy on the test set
+   7. Log the results
+6.  Get the best run and save the model
 
 ### Pipeline architecture
 
-
 **What are the benefits of the parameter sampler you chose?**
+The `azureml.train.hyperdrive` package contains modules and classes supporting hyperparameter tuning. It is possible to define the parameter search space as discrete or continuous, and a sampling method over the search space as random (`RandomParameterSampling`), grid (`GridParameterSampling`), or Bayesian (`BayesianParameterSampling`).
+
+The `GridParameterSampling` method defines a grid of hyperparameter values. The tuning algorithm exhaustively searches this space in a sequential manner and trains a model for every possible combination of hyperparameter values. This method has the advantage of being exhaustive, but not very efficient.
+
+The `RandomParameterSampling` method differs from grid search in that we no longer provide an explicit set of possible values for each hyperparameter; rather, we provide a statistical distribution for each hyperparameter from which values are sampled. Essentially, we define a sampling distribution for each hyperparameter to carry out a randomized search.
+
+For this project, the `RandomParameterSampling` was chosen as the parameter sampler.
 
 **What are the benefits of the early stopping policy you chose?**
 
@@ -96,3 +103,10 @@ Scikit best : Accuracy: 0.9150227617602428
 ## Proof of cluster clean up
 **If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
 **Image of cluster marked for deletion**
+
+
+Sources : 
+- [A Data-Driven Approach to Predict the Success of Bank Telemarketing](https://repositorio.iscte-iul.pt/bitstream/10071/9499/5/dss_v3.pdf)
+- [Comparison of Hyperparameter Tuning algorithms: Grid search, Random search, Bayesian optimization](https://medium.com/analytics-vidhya/comparison-of-hyperparameter-tuning-algorithms-grid-search-random-search-bayesian-optimization-5326aaef1bd1)
+- [Hyperparameter tuning a model with Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters)
+- [hyperdrive Package](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py)
