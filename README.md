@@ -150,7 +150,7 @@ This imbalance can be handled by using technique like **Synthetic Minority Overs
 
 Also, additional hypeparameters could be tested in the Sklearn Logistic Regression along with different parameter sampling techniques and tuning the arguments of the BanditPolicy. 
 
-The AutoML run could also be extended with different experiment timeout to see if the performance could be imroved.
+The AutoML run could also be extended with different experiment timeout to see if the performance could be improved.
 
 ## Proof of cluster clean up
 **If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
